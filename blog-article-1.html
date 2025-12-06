@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>个人网站</title>
+  <title>我的第一篇博客文章 - 个人网站</title>
   <style>
     * {
       margin: 0;
@@ -88,27 +88,77 @@
 
     main {
       padding: 60px 40px;
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .welcome-section {
+    .article-header {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-header h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .article-meta {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .article-content {
       background-color: #fff;
       padding: 40px;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      line-height: 1.8;
     }
 
-    .welcome-section h1 {
-      font-size: 32px;
+    .article-content p {
       margin-bottom: 20px;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .article-content h2 {
+      font-size: 24px;
+      margin: 30px 0 15px 0;
       color: #333;
     }
 
-    .welcome-section p {
-      font-size: 18px;
+    .article-content h3 {
+      font-size: 20px;
+      margin: 25px 0 12px 0;
+      color: #333;
+    }
+
+    .article-content ul, .article-content ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
       color: #666;
-      line-height: 1.8;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #0066cc;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #0052a3;
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
@@ -128,16 +178,20 @@
         padding: 30px 20px;
       }
 
-      .welcome-section {
+      .article-header, .article-content {
         padding: 20px;
       }
 
-      .welcome-section h1 {
+      .article-header h1 {
         font-size: 24px;
       }
 
-      .welcome-section p {
-        font-size: 16px;
+      .article-content h2 {
+        font-size: 20px;
+      }
+
+      .article-content h3 {
+        font-size: 18px;
       }
     }
   </style>
@@ -151,6 +205,7 @@
       <div class="profile-name">我的个人网站</div>
     </div>
     <nav>
+      <a href="index.html">Home</a>
       <a href="blogs.html">Blogs</a>
       <a href="#tech-articles">Tech Articles</a>
       <a href="#about">About me</a>
@@ -158,10 +213,33 @@
   </header>
 
   <main>
-    <section class="welcome-section">
-      <h1>欢迎来到我的个人网站！</h1>
-      <p>这是我的个人空间，在这里我会分享我的博客文章、技术笔记和项目作品。敬请期待！</p>
-    </section>
+    <div class="article-header">
+      <h1>我的第一篇博客文章</h1>
+      <div class="article-meta">发布于 2025年12月6日</div>
+    </div>
+
+    <div class="article-content">
+      <p>欢迎阅读我的第一篇博客文章！这是一个特殊的时刻，我正式开始了我的博客之旅。</p>
+
+      <h2>为什么要写博客？</h2>
+      <p>写博客对我来说有很多好处。首先，它能帮助我整理思路，将学到的知识系统地记录下来。其次，通过分享，我可以帮助更多志同道合的人。最后，这个过程本身也是一种学习和提升。</p>
+
+      <h2>我的博客计划</h2>
+      <p>在这个博客中，我计划分享以下几类内容：</p>
+      <ul>
+        <li>技术学习笔记和教程</li>
+        <li>项目开发经验和案例分析</li>
+        <li>个人成长和反思</li>
+        <li>有趣的想法和发现</li>
+      </ul>
+
+      <h2>开始行动</h2>
+      <p>现在我已经建立了个人网站，接下来会定期更新博客内容。希望大家喜欢我的文章，也欢迎提出意见和建议！</p>
+
+      <p>让我们一起在这个旅程中成长吧！</p>
+
+      <a href="blogs.html" class="back-link">← 返回博客列表</a>
+    </div>
   </main>
 </body>
 </html>
