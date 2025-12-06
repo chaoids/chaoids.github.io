@@ -10,11 +10,14 @@ async function loadArticle() {
     const markdown = await response.text();
     const { meta, content } = parseArticleMarkdown(markdown);
     
+    // Convert ISO date to Chinese format for display
+    const displayDate = formatDateToChinese(meta.date);
+    
     // Set page title and article heading
     document.title = `${meta.title} - Chao Ideas`;
     document.getElementById('article-title').textContent = `${meta.title} - Chao Ideas`;
     document.getElementById('article-heading').textContent = meta.title;
-    document.getElementById('article-date').textContent = `发布于 ${meta.date}`;
+    document.getElementById('article-date').textContent = `发布于 ${displayDate}`;
     
     // Convert markdown to HTML and display
     const html = marked.parse(content);
@@ -34,12 +37,24 @@ async function loadArticle() {
   }
 }
 
+// Convert ISO date (YYYY-MM-DD) to Chinese format (YYYY年MM月DD日)
+function formatDateToChinese(isoDate) {
+  if (!isoDate) return new Date().toLocaleDateString('zh-CN');
+  
+  const date = new Date(isoDate);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  
+  return `${year}年${month}月${day}日`;
+}
+
 // Parse YAML-style frontmatter from markdown
 function parseArticleMarkdown(markdown) {
   const lines = markdown.split('\n');
   const meta = {
     title: '未命名文章',
-    date: new Date().toLocaleDateString('zh-CN')
+    date: new Date().toISOString().split('T')[0]
   };
   
   let contentStart = 0;
