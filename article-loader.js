@@ -4,8 +4,29 @@ async function loadArticle() {
   const articleId = urlParams.get('id') || '1';
   
   try {
-    const response = await fetch(`articles/${articleId}.md`);
-    if (!response.ok) throw new Error('Article not found');
+    // Try multiple possible paths
+    const paths = [
+      `articles/${articleId}.txt`,
+      `/articles/${articleId}.txt`,
+      `./articles/${articleId}.txt`
+    ];
+    
+    let response = null;
+    let lastError = null;
+    
+    for (const path of paths) {
+      try {
+        response = await fetch(path);
+        if (response.ok) break;
+        lastError = `Path ${path} returned status ${response.status}`;
+      } catch (e) {
+        lastError = e.message;
+      }
+    }
+    
+    if (!response || !response.ok) {
+      throw new Error(`Article not found. Last error: ${lastError}`);
+    }
     
     const markdown = await response.text();
     const { meta, content } = parseArticleMarkdown(markdown);
@@ -33,7 +54,7 @@ async function loadArticle() {
     
   } catch (error) {
     console.error('Error loading article:', error);
-    document.getElementById('article-content').innerHTML = '<p>文章加载失败</p>';
+    document.getElementById('article-content').innerHTML = '<p>文章加载失败: ' + error.message + '</p>';
   }
 }
 
